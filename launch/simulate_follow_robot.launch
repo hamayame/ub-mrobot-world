@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find ub-mrobot-world)/launch/cmvision.launch">
+    </include>
+  <node name="node_takeoff" pkg="ub-mrobot-world" type="takeoff.py" output="screen">
+    </node>
+  <node name="node_move_irobot_create" pkg="ub-mrobot-world" type="move_irobot_create.py" output="screen">
+    </node>
+  <node name="node_follow_blob" pkg="ub-mrobot-world" type="follow_blob.py" output="screen">
+    </node>
+</launch>

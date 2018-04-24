@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+
+ <launch>
+   <arg name="model" default="$(find ub-mrobot-world)/models/create/model-1_4.sdf"/>
+   <arg name="x" default="1"/>
+   <arg name="y" default="0"/>
+   <arg name="z" default="0.5"/>
+   <arg name="R" default="0"/>
+   <arg name="P" default="0"/>
+   <arg name="Y" default="0"/>
+   <!-- send the robot XML to param server
+   <param name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'" />
+   		 -->
+   <!-- push robot_description to factory and spawn robot in gazebo -->
+   <node name="spawn_robot_follow" pkg="gazebo_ros" type="spawn_model"
+   args="-file '$(arg model)'
+   -sdf
+   -x '$(arg x)'
+   -y '$(arg y)'
+   -z '$(arg z)'
+   -R '$(arg R)'
+   -P '$(arg P)'
+   -Y '$(arg Y)'
+   -model create"
+     respawn="false" output="screen"/>
+
+ </launch>
+   
