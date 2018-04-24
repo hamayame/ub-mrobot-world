@@ -1,6 +1,7 @@
 UB Mobile Robotic World on Indigo
 =============
 DISCLAIMER : Saya tidak akan mengupdate package ini setelah tanggal 1 Juni 2018 (01/06/2018) dikarenakan berbagai hal.
+=============
 
 Package ini saya buat untuk dapat digunakan dalam pembelajaran mata kuliah Mobile Robotics Fakultas Ilmu Komputer
 
