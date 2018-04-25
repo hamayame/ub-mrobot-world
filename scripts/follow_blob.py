@@ -4,12 +4,14 @@ from geometry_msgs.msg import Twist
 from cmvision.msg import Blobs, Blob
 
 #global
+found = False
 move_x = 0.0
 move_y = 0.0
 blob_pos_x = 0.0
 blob_pos_y = 0.0
 
 def callback(data):
+	global found
 	global move_x
 	global move_y
 	global blob_pos_x
@@ -18,6 +20,7 @@ def callback(data):
 	if( len( data.blobs ) ):
 		for obj in data.blobs:
 			if( obj.name == "iCreate" ):
+				found = True
 				blob_pos_x = obj.x #blob(x) -> width
 				blob_pos_y = obj.y #blob(y) -> height
 
@@ -37,6 +40,18 @@ def callback(data):
 					move_x = -0.3
 				if( blob_pos_x > 310 and blob_pos_x < 330):
 					move_x = 0
+			else:
+				found = False
+
+def position():
+	global found
+	global blob_pos_x
+	global blob_pos_y
+
+	rospy.Subscriber('/blobs', Blobs, callback)
+
+	return found, blob_pos_x, blob_pos_y
+	
 
 def run(): 
 	global move_x
